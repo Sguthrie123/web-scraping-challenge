@@ -19,6 +19,13 @@ def scrape():
     # final_dict['title'] = news_title
     # final_dict['text'] = list_text 
 
+    news_title = soup.find('div', class_='content_title').text
+    news_title.replace("\n","")
+    final_dict['news_title'] = news_title
+
+    list_text = soup.find('div', class_='rollover_description').text
+    list_text.replace("\n","")
+    final_dict['list_text'] = list_text
     # Find the spaceimage using splinter 
 
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
