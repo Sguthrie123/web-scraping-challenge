@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Info</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+</head>
+
+<body>
+    {% for facts in mars%}
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="main">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Latest Mars News</h1>
+                    <hr>
+                    <h2>NASA's Perseverance Rover Mission Getting in Shape for Launch</h2>
+                    <p>Stacking spacecraft components on top of each other is one of the final assembly steps before a mission launches to the Red Planet.</p>
+                    <br/>
+
+                </div> 
+            </div>
+        </div>  
+    </section>
+    
+    <section class="container">
+        <div class="main">
+        <div class='row'>
+        <div class="col-md-9">
+          <h1>Featured Mars Image</h1>
+          <hr>
+          <div>
+            <img id="main-chart" src="{{ facts.feat_img }}" alt="Featured Image">
+          </div>
+        </div>
+
+        <div class='col-md-3'>
+            <div class="card" style="width: 18rem;">
+                <img src="https://image.cnbcfm.com/api/v1/image/106494280-1587152288045curiosityrover.jpg?v=1587152367&w=1400&h=950" class="card-img-top" alt="marz" width="280" height="280">
+                    <div class="card-body">
+                        <h5 class="card-title">Weather Today From Mars Weather Twitter</h5>
+                        <p class="card-text">{{facts.tweet}}</p>
+                        <a href="https://twitter.com/MarsWxReport" class="btn btn-primary">Twitter</a>
+                    </div>
+              </div>
+            </div>  
+
+                <div class="col-md-3">
+                    <h4>Mars Facts</h4>
+                    {{facts.mars_fact | safe}}
+                </div> 
+            </div>
+        </div>  
+
+
+        <section class="container">
+            <div class="compare">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1>Mars Hemispheres</h1>
+                  <hr>
+                </div>
+              </div>
+        
+              <div class="row">
+                <div class="col-md-12">
+                  <p>Click on any title for more detail.</p>
+                </div>
+              </div>
+        
+              <div class="row justify-content-center" id="middle">
+                <div class="col-md-6 justify-content-center">
+                  <a href="https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced"><h2>{{facts.hemi_list[0]['title']}}</h2></a>
+                    <img class = "figs" src="{{facts.hemi_list[0]['images_url']}}" width="500" height="500">
+                  </a>
+                  <hr id="hide">
+                </div>
+        
+                <div class="row justify-content-center" id="middle">
+                    <div class="col-md-6 justify-content-center">
+                      <a href="https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced"><h2>{{facts.hemi_list[1]['title']}}</h2></a>
+                        <img class = "figs" src="{{facts.hemi_list[1]['images_url']}}" width="500" height="500">
+                      </a>
+                      <hr id="hide">
+                </div>
+            
+        
+                <div class="row justify-content-center" id="middle">
+                    <div class="col-md-6 justify-content-center">
+                      <a href="https://astrogeology.usgs.gov/search/map/Mars/Viking/syrtis_major_enhanced"><h2>{{facts.hemi_list[2]['title']}}</h2></a>
+                        <img class = "figs" src="{{facts.hemi_list[2]['images_url']}}" width="500" height="500">
+                      </a>
+                      <hr id="hide">
+                    </div>
+            
+              
+                    <div class="row justify-content-center" id="middle">
+                        <div class="col-md-6 justify-content-center">
+                          <a href="https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced"><h2>{{facts.hemi_list[3]['title']}}</h2></a>
+                            <img class = "figs" src="{{facts.hemi_list[3]['images_url']}}" width="500" height="500">
+                          </a>
+                          <hr id="hide">
+                        </div>
+                  </div>
+                </div>
+          </section>
+        {% endfor %}
+</body>
+</html>
